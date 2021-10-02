@@ -22,6 +22,7 @@ import androidx.annotation.RequiresApi
 class FriendFieldFragment : Fragment() {
 
     private lateinit var binding: FragmentFriendFieldBinding
+    private var date:String =""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,10 +52,19 @@ class FriendFieldFragment : Fragment() {
                     )
                 }, mYear, mMonth, mDay
             )
+            date = "$mDay-$mMonth-$mYear"
             datePickerDialog.show()
         }
-
-
-
+        binding.submitBtn.setOnClickListener {
+            val name = binding.nameEditText.text.toString()
+            val tagline = binding.taglineEditText.text.toString()
+            val flag = "true"
+            var bundle = Bundle()
+            bundle.putString("namebundle",name)
+            bundle.putString("taglinebundle",tagline)
+            bundle.putString("dobbundle",date)
+            bundle.putString("flag",flag)
+            findNavController().navigate(R.id.action_friendFieldFragment_to_main2Fragment,bundle)
+        }
     }
 }

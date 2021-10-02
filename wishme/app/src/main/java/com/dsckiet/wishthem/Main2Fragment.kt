@@ -13,31 +13,34 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dsckiet.wishthem.adapter.FriendsAdapter
-import com.dsckiet.wishthem.databinding.FragmentMainBinding
+import com.dsckiet.wishthem.databinding.FragmentMain2Binding
 import com.dsckiet.wishthem.entity.FriendsEntity
 import com.dsckiet.wishthem.viewmodel.FriendViewModel
 
-class MainFragment(val application: Application) : Fragment() {
+class Main2Fragment: Fragment() {
 
-    private lateinit var binding: FragmentMainBinding
-//    lateinit var viewModel: FriendViewModel
-
+    private lateinit var binding : FragmentMain2Binding
+    private lateinit var viewModel: FriendViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_main2, container, false)
         return binding.root
     }
-/*
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.mainFab.setOnClickListener {
+            findNavController().navigate(R.id.action_main2Fragment_to_friendFieldFragment)
+        }
         val adapter = FriendsAdapter(requireContext(),this)
         val recyclerView = binding.mainRecview
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
         viewModel = ViewModelProvider(this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(FriendViewModel::class.java)
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(FriendViewModel::class.java)
         viewModel.allFriends.observe(viewLifecycleOwner, Observer {list ->
 
             list?.let{
@@ -47,7 +50,7 @@ class MainFragment(val application: Application) : Fragment() {
 
 
         binding.mainFab.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_friendFieldFragment)
+            findNavController().navigate(R.id.action_main2Fragment_to_friendFieldFragment)
         }
         var bundleid = this.arguments
         var namebundle : String = ""
@@ -68,6 +71,8 @@ class MainFragment(val application: Application) : Fragment() {
 
             }
         }
+
+
     }
 
     fun onItemClicked(friendsEntity: FriendsEntity) {
@@ -75,6 +80,5 @@ class MainFragment(val application: Application) : Fragment() {
         viewModel.deleteFriend(friendsEntity)
         Toast.makeText(requireContext(),"Deleted",Toast.LENGTH_LONG).show()
 
-    }*/
-
+    }
 }

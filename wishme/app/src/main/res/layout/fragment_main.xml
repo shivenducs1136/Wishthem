@@ -6,19 +6,13 @@
 
     </data>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainFragment">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        >
+        android:layout_marginRight="10dp">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -35,9 +29,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/ic_baseline_add_24"
-            android:id="@+id/main_fab"
-            />
+            android:id="@+id/main_fab" />
 
     </RelativeLayout>
-    </FrameLayout>
 </layout>

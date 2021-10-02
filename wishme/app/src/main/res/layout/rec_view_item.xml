@@ -63,7 +63,9 @@
                 android:maxLines="1"
                 android:text="20-08-2002"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/rec_item_dob"
+                />
 
         </RelativeLayout>
     </RelativeLayout>
