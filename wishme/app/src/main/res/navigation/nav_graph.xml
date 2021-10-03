@@ -22,5 +22,18 @@
         <action
             android:id="@+id/action_main2Fragment_to_friendFieldFragment"
             app:destination="@id/friendFieldFragment" />
+        <action
+            android:id="@+id/action_main2Fragment_to_onFriendClickedFragment"
+            app:destination="@id/onFriendClickedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onFriendClickedFragment"
+        android:name="com.dsckiet.wishthem.OnFriendClickedFragment"
+        android:label="fragment_on_friend_clicked"
+        tools:layout="@layout/fragment_on_friend_clicked" >
+        <action
+            android:id="@+id/action_onFriendClickedFragment_to_main2Fragment"
+            app:destination="@id/main2Fragment"
+            app:popUpTo="@id/main2Fragment" />
     </fragment>
 </navigation>

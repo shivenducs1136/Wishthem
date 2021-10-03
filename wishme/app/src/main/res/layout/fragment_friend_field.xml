@@ -36,7 +36,7 @@
                         android:scaleType="centerCrop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@mipmap/ic_launcher_round"
+                        android:src="@drawable/ic_baseline_perm_identity_24"
                         android:id="@+id/main_img"
                         />
                 </androidx.cardview.widget.CardView>
@@ -48,6 +48,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     app:cardCornerRadius="20dp"
+                    android:id="@+id/select_img_btn"
                     >
                     <RelativeLayout
                         android:padding="10dp"
@@ -100,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/name_text_field"
                     android:layout_marginTop="20dp"
-                    android:hint="Tagline"
+                    android:hint="Keyword"
 
                     >
 

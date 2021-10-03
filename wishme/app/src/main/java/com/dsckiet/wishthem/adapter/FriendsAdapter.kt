@@ -1,11 +1,16 @@
 package com.dsckiet.wishthem.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.dsckiet.wishthem.Main2Fragment
 import com.dsckiet.wishthem.R
@@ -35,7 +40,27 @@ class FriendsAdapter(val context: Context, val listener: Main2Fragment): Recycle
         holder.nametextView.text = currentfriend.name
         holder.taglinetextView.text = currentfriend.tagline
         holder.dobtextView.text = currentfriend.dob
+        holder.dp.setImageURI(currentfriend.image.toUri())
+
+        holder.itemView.setOnClickListener {
+            val name = currentfriend.name
+            val tagline = currentfriend.tagline
+            val flag = "true"
+            val date = currentfriend.dob
+            val image = currentfriend.image
+            var itembundle = Bundle()
+            itembundle.putString("Adnamebundle",name)
+            itembundle.putString("Adtaglinebundle",tagline)
+            itembundle.putString("Addobbundle",date)
+            itembundle.putString("Adflag",flag)
+            itembundle.putString("Adimage", image.toString())
+
+            holder.itemView.findNavController().navigate(R.id.action_main2Fragment_to_onFriendClickedFragment,itembundle)
+        }
+
     }
+
+
 
     override fun getItemCount(): Int {
         return allFriends.size

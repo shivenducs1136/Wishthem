@@ -1,9 +1,13 @@
 package com.dsckiet.wishthem
 
+import android.Manifest
+import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.DialogInterface
+import android.content.Intent
 import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,11 +15,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.dsckiet.wishthem.databinding.FragmentFriendFieldBinding
-import com.google.android.material.datepicker.MaterialDatePicker
-import android.widget.DatePicker
 import androidx.annotation.RequiresApi
 
 
@@ -23,6 +24,11 @@ class FriendFieldFragment : Fragment() {
 
     private lateinit var binding: FragmentFriendFieldBinding
     private var date:String =""
+    companion object{
+        val IMAGE_REQUEST_CODE = 100
+    }
+    private var uri:Uri? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,21 +56,45 @@ class FriendFieldFragment : Fragment() {
                             monthOfYear + 1, year
                         )
                     )
+                    date = "$dayOfMonth-${monthOfYear +1}-$year"
                 }, mYear, mMonth, mDay
             )
-            date = "$mDay-$mMonth-$mYear"
+
             datePickerDialog.show()
+        }
+        binding.selectImgBtn.setOnClickListener {
+            pickimagefromgallery()
         }
         binding.submitBtn.setOnClickListener {
             val name = binding.nameEditText.text.toString()
             val tagline = binding.taglineEditText.text.toString()
             val flag = "true"
+            val image = uri
             var bundle = Bundle()
             bundle.putString("namebundle",name)
             bundle.putString("taglinebundle",tagline)
             bundle.putString("dobbundle",date)
             bundle.putString("flag",flag)
+            bundle.putString("image", image.toString())
             findNavController().navigate(R.id.action_friendFieldFragment_to_main2Fragment,bundle)
         }
+
     }
+    private fun pickimagefromgallery(){
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        intent.type = "image/*"
+        requireActivity().startActivityFromFragment(this,intent, IMAGE_REQUEST_CODE)
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK){
+            binding.mainImg.setImageURI(data?.data)
+            uri = data?.data
+        }
+    }
+
+
+
 }

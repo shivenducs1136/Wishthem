@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "friends_table")
 class FriendsEntity(@ColumnInfo(name = "name") val name: String,
                     @ColumnInfo(name = "tagline") val tagline: String,
-                    @ColumnInfo(name = "dob") val dob: String){
+                    @ColumnInfo(name = "dob") val dob: String,
+                    @ColumnInfo(name ="image") val image:String){
         @PrimaryKey(autoGenerate = true)
         var id = 0
 

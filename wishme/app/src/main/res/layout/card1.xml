@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp"
+        android:layout_margin="10dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FDDAFF"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:id="@+id/card1_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Sample Name"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/card1_tagline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Sample tagline"
+                    android:textSize="17sp"
+                    android:layout_below="@+id/card1_name"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/card1_tagline"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:maxLines="2"
+                        android:text="Wish you a very Happy Birthday !"
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        />
+
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_undraw_love_is_in_the_air_4mmc" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

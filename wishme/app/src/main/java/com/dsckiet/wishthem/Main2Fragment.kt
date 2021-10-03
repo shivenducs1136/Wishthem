@@ -57,19 +57,23 @@ class Main2Fragment: Fragment() {
         var taglinebundle : String = ""
         var dobbundle : String = ""
         var flag = "false"
+        var img =""
         if(bundleid != null){
 
             namebundle = bundleid.getString("namebundle").toString()
             taglinebundle = bundleid.getString("taglinebundle").toString()
             dobbundle = bundleid.getString("dobbundle").toString()
             flag = bundleid.getString("flag").toString()
+            img = bundleid.getString("image").toString()
         }
+
         if(flag == "true"){
-            if(namebundle.isNotEmpty() && taglinebundle.isNotEmpty() && dobbundle.isNotEmpty() ){
-                viewModel.insertFriend(FriendsEntity(namebundle,taglinebundle,dobbundle))
+            if(namebundle.isNotEmpty() && taglinebundle.isNotEmpty() && dobbundle.isNotEmpty() && img.isNotEmpty() ){
+                viewModel.insertFriend(FriendsEntity(namebundle,taglinebundle,dobbundle,img))
                 Toast.makeText(requireContext(),"$namebundle added", Toast.LENGTH_LONG).show()
 
             }
+
         }
 
 

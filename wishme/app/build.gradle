@@ -79,4 +79,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
 
     implementation "androidx.fragment:fragment:1.2.5"
+    implementation 'androidx.viewpager2:viewpager2:1.0.0' // View Pager
+    implementation 'com.karumi:dexter:6.2.3'
 }
