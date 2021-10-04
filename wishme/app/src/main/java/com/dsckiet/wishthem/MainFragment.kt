@@ -20,61 +20,12 @@ import com.dsckiet.wishthem.viewmodel.FriendViewModel
 class MainFragment(val application: Application) : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-//    lateinit var viewModel: FriendViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_main,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         return binding.root
     }
-/*
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val adapter = FriendsAdapter(requireContext(),this)
-        val recyclerView = binding.mainRecview
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
-        viewModel = ViewModelProvider(this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(FriendViewModel::class.java)
-        viewModel.allFriends.observe(viewLifecycleOwner, Observer {list ->
-
-            list?.let{
-                adapter.updateFriendsList(it)
-            }
-        })
-
-
-        binding.mainFab.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_friendFieldFragment)
-        }
-        var bundleid = this.arguments
-        var namebundle : String = ""
-        var taglinebundle : String = ""
-        var dobbundle : String = ""
-        var flag = "false"
-        if(bundleid != null){
-
-            namebundle = bundleid.getString("namebundle").toString()
-            taglinebundle = bundleid.getString("taglinebundle").toString()
-            dobbundle = bundleid.getString("dobbundle").toString()
-            flag = bundleid.getString("flag").toString()
-        }
-        if(flag == "true"){
-            if(namebundle.isNotEmpty() && taglinebundle.isNotEmpty() && dobbundle.isNotEmpty() ){
-                viewModel.insertFriend(FriendsEntity(namebundle,taglinebundle,dobbundle))
-                Toast.makeText(requireContext(),"$namebundle added", Toast.LENGTH_LONG).show()
-
-            }
-        }
-    }
-
-    fun onItemClicked(friendsEntity: FriendsEntity) {
-
-        viewModel.deleteFriend(friendsEntity)
-        Toast.makeText(requireContext(),"Deleted",Toast.LENGTH_LONG).show()
-
-    }*/
-
 }
