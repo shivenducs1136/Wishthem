@@ -16,6 +16,7 @@ import com.dsckiet.wishthem.adapter.FriendsAdapter
 import com.dsckiet.wishthem.databinding.FragmentMain2Binding
 import com.dsckiet.wishthem.entity.FriendsEntity
 import com.dsckiet.wishthem.viewmodel.FriendViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class Main2Fragment: Fragment() {
 
@@ -31,7 +32,6 @@ class Main2Fragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.mainFab.setOnClickListener {
             findNavController().navigate(R.id.action_main2Fragment_to_friendFieldFragment)
         }
@@ -66,14 +66,14 @@ class Main2Fragment: Fragment() {
             flag = bundleid.getString("flag").toString()
             img = bundleid.getString("image").toString()
         }
-
         if(flag == "true"){
-            if(namebundle.isNotEmpty() && taglinebundle.isNotEmpty() && dobbundle.isNotEmpty() && img.isNotEmpty() ){
-                viewModel.insertFriend(FriendsEntity(namebundle,taglinebundle,dobbundle,img))
-                Toast.makeText(requireContext(),"$namebundle added", Toast.LENGTH_LONG).show()
+            if(namebundle.isNotEmpty() && taglinebundle.isNotEmpty() && dobbundle.isNotEmpty() ) {
+
+                viewModel.insertFriend(FriendsEntity(namebundle, taglinebundle, dobbundle, img))
+
+                Toast.makeText(requireContext(), "$namebundle added", Toast.LENGTH_LONG).show()
 
             }
-
         }
 
 

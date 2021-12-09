@@ -18,6 +18,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.dsckiet.wishthem.databinding.FragmentFriendFieldBinding
 import androidx.annotation.RequiresApi
+import com.google.android.material.snackbar.Snackbar
 
 
 class FriendFieldFragment : Fragment() {
@@ -71,12 +72,21 @@ class FriendFieldFragment : Fragment() {
             val flag = "true"
             val image = uri
             var bundle = Bundle()
-            bundle.putString("namebundle",name)
-            bundle.putString("taglinebundle",tagline)
-            bundle.putString("dobbundle",date)
-            bundle.putString("flag",flag)
-            bundle.putString("image", image.toString())
-            findNavController().navigate(R.id.action_friendFieldFragment_to_main2Fragment,bundle)
+                bundle.putString("namebundle",name)
+                bundle.putString("taglinebundle",tagline)
+                bundle.putString("dobbundle",date)
+                bundle.putString("flag",flag)
+                bundle.putString("image", image.toString())
+            if(name.isNotEmpty() && tagline.isNotEmpty() && date.isNotEmpty()){
+                findNavController().navigate(R.id.action_friendFieldFragment_to_main2Fragment,bundle)
+                binding.nameEditText.text = null
+                binding.taglineEditText.text = null
+                uri = null
+
+            }
+            else{
+                Snackbar.make(requireView(),"Please enter the required details",Snackbar.LENGTH_SHORT).show()
+            }
         }
 
     }

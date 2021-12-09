@@ -41,7 +41,6 @@ class FriendsAdapter(val context: Context, val listener: Main2Fragment): Recycle
         holder.taglinetextView.text = currentfriend.tagline
         holder.dobtextView.text = currentfriend.dob
         holder.dp.setImageURI(currentfriend.image.toUri())
-
         holder.itemView.setOnClickListener {
             val name = currentfriend.name
             val tagline = currentfriend.tagline
@@ -53,11 +52,11 @@ class FriendsAdapter(val context: Context, val listener: Main2Fragment): Recycle
             itembundle.putString("Adtaglinebundle",tagline)
             itembundle.putString("Addobbundle",date)
             itembundle.putString("Adflag",flag)
-            itembundle.putString("Adimage", image.toString())
+            itembundle.putString("Adimage", image)
+
 
             holder.itemView.findNavController().navigate(R.id.action_main2Fragment_to_onFriendClickedFragment,itembundle)
         }
-
     }
 
 
